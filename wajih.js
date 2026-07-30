@@ -164,3 +164,41 @@ form.addEventListener('submit', (event) => {
     formFeedback.textContent = '';
   }, 5000);
 });
+
+/* Fit each main section to the viewport on small screens by scaling the content container. */
+function fitSectionsToViewport() {
+  // only apply on narrow/mobile viewports
+  const apply = window.innerWidth <= 520 || window.innerHeight <= 800;
+  document.querySelectorAll('main section').forEach((section) => {
+    const container = section.querySelector('.container') || section;
+    container.style.transition = 'transform 160ms ease';
+    container.style.transformOrigin = 'top center';
+
+    // reset before measuring
+    container.style.transform = '';
+
+    if (!apply) {
+      // ensure we clear any previous transform on larger screens
+      container.style.transform = '';
+      return;
+    }
+
+    const contentHeight = container.scrollHeight;
+    const available = Math.max(window.innerHeight - 24, 200);
+    let scale = available / contentHeight;
+    if (scale > 1) scale = 1;
+    if (scale < 0.55) scale = 0.55; // prevent unreadably small text
+
+    container.style.transform = `scale(${scale})`;
+  });
+}
+
+let _fitT;
+window.addEventListener('resize', () => {
+  clearTimeout(_fitT);
+  _fitT = setTimeout(fitSectionsToViewport, 120);
+});
+window.addEventListener('orientationchange', () => setTimeout(fitSectionsToViewport, 200));
+window.addEventListener('load', fitSectionsToViewport);
+document.addEventListener('DOMContentLoaded', fitSectionsToViewport);
+

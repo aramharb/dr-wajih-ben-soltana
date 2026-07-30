@@ -879,25 +879,57 @@ textarea {
   .testimonials-section,
   .appointment-section,
   .contact-section {
-    padding: 2rem 0;
+    /* make each section full-viewport and center its content */
+    padding: 0;
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
   }
 
   .container {
-    width: min(100%, calc(100% - 1.5rem));
+    width: calc(100% - 1rem);
+    padding: 0.6rem;
   }
 
   .hero-grid,
   .choose-grid,
   .appointment-grid {
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .hero-visual {
-    min-height: 360px;
+    min-height: 220px;
   }
 
   h1 {
-    font-size: clamp(2.5rem, 8vw, 3rem);
+    font-size: clamp(1.6rem, 6vw, 2.4rem);
+  }
+
+  /* containers will be scaled by JS to fit; smooth transform */
+  main section .container {
+    transition: transform 160ms ease;
+    transform-origin: top center;
+  }
+
+  .appointment-form {
+    padding: 1rem;
+  }
+
+  .header-inner {
+    padding: 0.6rem 0;
+  }
+
+  .site-header .container {
+    padding-left: 0.6rem;
+    padding-right: 0.6rem;
+  }
+
+  .nav-link {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.95rem;
   }
 }
 
