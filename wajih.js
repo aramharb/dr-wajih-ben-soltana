@@ -13,6 +13,7 @@ const header = document.querySelector('.site-header');
 const heroButtons = document.querySelectorAll('[data-target]');
 
 const sections = [...document.querySelectorAll('main section[id]')];
+let ticking = false;
 
 window.addEventListener('load', () => {
   document.querySelector('.page-loader').classList.add('hide');
@@ -21,10 +22,15 @@ window.addEventListener('load', () => {
 });
 
 window.addEventListener('scroll', () => {
-  updateProgress();
-  updateNavHighlight();
-  toggleBackToTop();
-});
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    updateProgress();
+    updateNavHighlight();
+    toggleBackToTop();
+    ticking = false;
+  });
+}, { passive: true });
 
 function openNav() {
   siteNav.classList.add('open');

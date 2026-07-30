@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+  <title id="title">Implants dentaires</title>
+  <desc id="desc">Dental implant and restored tooth concept.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e3f7fb"/></linearGradient><linearGradient id="metal" x1="0" x2="1"><stop stop-color="#c6d8e5"/><stop offset="1" stop-color="#6d8aa3"/></linearGradient></defs>
+  <rect width="900" height="560" fill="url(#bg)"/>
+  <circle cx="726" cy="122" r="116" fill="#39c0d8" opacity=".14"/>
+  <rect x="188" y="98" width="524" height="366" rx="34" fill="#fff" opacity=".9"/>
+  <path d="M390 139c-66 2-106 55-90 122 13 54 58 123 90 123 23 0 33-38 60-38s37 38 60 38c32 0 77-69 90-123 16-67-24-120-90-122-31-1-39 19-60 19s-29-20-60-19z" fill="#fff" stroke="#8bddeb" stroke-width="10"/>
+  <rect x="417" y="360" width="66" height="58" rx="16" fill="url(#metal)"/>
+  <path d="M422 425h56l-10 64h-36z" fill="#0b6397"/>
+  <path d="M419 445h62M416 470h68" stroke="#fff" stroke-width="8" opacity=".55"/>
+  <path d="M260 448h380" stroke="#d9f4fb" stroke-width="18" stroke-linecap="round"/>
+</svg>

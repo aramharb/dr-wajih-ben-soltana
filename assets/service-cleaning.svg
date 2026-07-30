@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+  <title id="title">Detartrage et nettoyage</title>
+  <desc id="desc">Professional dental cleaning tools and fresh smile.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f9feff"/><stop offset="1" stop-color="#d9f5fb"/></linearGradient></defs>
+  <rect width="900" height="560" fill="url(#bg)"/>
+  <rect x="126" y="104" width="648" height="352" rx="36" fill="#fff" opacity=".9"/>
+  <path d="M252 276c74-58 322-58 396 0 24 19 12 82-28 119-78 72-262 72-340 0-40-37-52-100-28-119z" fill="#fff" stroke="#8bddeb" stroke-width="10"/>
+  <path d="M318 327c65 34 199 34 264 0" fill="none" stroke="#0b6397" stroke-width="14" stroke-linecap="round"/>
+  <path d="M632 128l70 70M694 136l-54 54" stroke="#39c0d8" stroke-width="18" stroke-linecap="round"/>
+  <path d="M185 163l102 102" stroke="#0b6397" stroke-width="16" stroke-linecap="round"/>
+  <circle cx="303" cy="281" r="22" fill="#39c0d8" opacity=".32"/>
+  <circle cx="353" cy="247" r="13" fill="#39c0d8" opacity=".52"/>
+  <circle cx="588" cy="235" r="18" fill="#39c0d8" opacity=".38"/>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+  <title id="title">Dentisterie pediatrique</title>
+  <desc id="desc">Friendly pediatric dental care with soft colors.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#e0f7fb"/></linearGradient></defs>
+  <rect width="900" height="560" fill="url(#bg)"/>
+  <circle cx="196" cy="130" r="95" fill="#39c0d8" opacity=".18"/>
+  <circle cx="742" cy="414" r="125" fill="#0b6397" opacity=".1"/>
+  <rect x="148" y="120" width="604" height="320" rx="38" fill="#fff" opacity=".9"/>
+  <path d="M347 178c-54 0-88 44-75 99 10 43 45 98 75 98 21 0 29-31 52-31s31 31 52 31c30 0 65-55 75-98 13-55-21-99-75-99-28 0-34 16-52 16s-24-16-52-16z" fill="#fff" stroke="#8bddeb" stroke-width="10"/>
+  <path d="M346 284c31 27 77 27 108 0" fill="none" stroke="#0b6397" stroke-width="12" stroke-linecap="round"/>
+  <path d="M598 170l18 40 42 15-41 16-17 42-17-41-41-17 41-15z" fill="#39c0d8"/>
+  <path d="M251 400h398" stroke="#d9f4fb" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="302" cy="197" r="16" fill="#39c0d8" opacity=".28"/>
+  <circle cx="509" cy="198" r="16" fill="#39c0d8" opacity=".28"/>
+</svg>

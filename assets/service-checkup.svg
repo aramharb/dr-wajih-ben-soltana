@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" role="img" aria-labelledby="title desc">
+  <title id="title">Bilan dentaire</title>
+  <desc id="desc">Dental checkup room with chair and clean equipment.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#f7fdff"/><stop offset="1" stop-color="#cceef7"/></linearGradient>
+    <linearGradient id="blue" x1="0" x2="1"><stop stop-color="#39c0d8"/><stop offset="1" stop-color="#0b6397"/></linearGradient>
+  </defs>
+  <rect width="900" height="560" fill="url(#sky)"/>
+  <circle cx="760" cy="90" r="120" fill="#fff" opacity=".6"/>
+  <rect x="88" y="106" width="724" height="342" rx="34" fill="#fff" opacity=".88"/>
+  <path d="M170 377c118-78 276-75 402-12 48 24 96 35 154 20v63H170z" fill="#d9f4fb"/>
+  <rect x="216" y="292" width="318" height="54" rx="27" fill="url(#blue)"/>
+  <rect x="456" y="224" width="154" height="148" rx="24" fill="#eef9fc" stroke="#8bddeb" stroke-width="8"/>
+  <circle cx="334" cy="225" r="86" fill="#fff" stroke="#8bddeb" stroke-width="10"/>
+  <path d="M302 220c25 29 41 29 65 0" fill="none" stroke="#0b6397" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="502" cy="260" r="16" fill="#39c0d8"/>
+  <circle cx="562" cy="260" r="16" fill="#39c0d8"/>
+  <path d="M645 186h74v34h-74zM682 220v106" stroke="#0b6397" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="682" cy="170" r="35" fill="#39c0d8" opacity=".75"/>
+</svg>
