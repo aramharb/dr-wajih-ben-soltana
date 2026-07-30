@@ -14,6 +14,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -22,6 +23,7 @@ body {
   background: radial-gradient(circle at top, rgba(57, 192, 216, 0.12), transparent 35%),
     linear-gradient(180deg, #fdfdff 0%, #eff5fb 100%);
   color: var(--text);
+  overflow-x: hidden;
 }
 
 * {
@@ -198,6 +200,9 @@ textarea {
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
   z-index: 70;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .nav-overlay.visible {
@@ -207,6 +212,7 @@ textarea {
 
 body.nav-locked {
   overflow: hidden;
+  overflow-x: hidden;
 }
 
 .site-nav-head,
@@ -914,18 +920,22 @@ textarea {
     top: 0;
     right: 0;
     bottom: 0;
-    width: min(300px, 84vw);
+    width: 100%;
+    max-width: 85vw;
     background: var(--surface-strong);
     backdrop-filter: blur(20px);
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
     padding: 1.1rem 1.1rem 1.6rem;
+    padding-right: max(1.1rem, env(safe-area-inset-right));
     box-shadow: -18px 0 50px rgba(16, 36, 59, 0.18);
     transform: translateX(100%);
     transition: transform 300ms ease;
     z-index: 80;
     overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 
   .site-nav.open {
