@@ -10,6 +10,8 @@ const header = document.querySelector('.site-header');
 const heroButtons = document.querySelectorAll('[data-target]');
 
 const sections = [...document.querySelectorAll('main section[id]')];
+const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+const mobileFab = document.querySelector('.mobile-fab');
 
 window.addEventListener('load', () => {
   document.querySelector('.page-loader').classList.add('hide');
@@ -43,6 +45,30 @@ navLinks.forEach((link) => {
     navToggle.setAttribute('aria-expanded', 'false');
   });
 });
+
+// wire mobile bottom nav buttons (app-like)
+if (mobileNavBtns) {
+  mobileNavBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const targetId = e.currentTarget.dataset.target;
+      document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+      // set aria and active states
+      mobileNavBtns.forEach((b) => b.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      // close top nav if it was open
+      siteNav.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+if (mobileFab) {
+  mobileFab.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = e.currentTarget.dataset.target;
+    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
+  });
+}
 
 modeToggle.addEventListener('click', () => {
   document.documentElement.classList.toggle('dark');
@@ -79,6 +105,13 @@ function updateNavHighlight() {
   navLinks.forEach((link) => {
     link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
   });
+
+  // also update mobile bottom nav active state when present
+  if (mobileNavBtns && mobileNavBtns.length) {
+    mobileNavBtns.forEach((btn) => {
+      btn.classList.toggle('active', btn.dataset.target === `#${currentId}`);
+    });
+  }
 }
 
 const observer = new IntersectionObserver(
