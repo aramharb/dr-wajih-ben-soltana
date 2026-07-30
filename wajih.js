@@ -191,15 +191,42 @@ form.addEventListener('submit', (event) => {
   });
 
   if (!valid) {
-    formFeedback.textContent = 'Veuillez corriger les champs en rouge avant d’envoyer.';
+    formFeedback.textContent = 'Veuillez corriger les champs en rouge avant d\'envoyer.';
     return;
   }
 
-  formFeedback.textContent = 'Merci ! Votre demande a bien été envoyée.';
-  form.reset();
-  setTimeout(() => {
-    formFeedback.textContent = '';
-  }, 5000);
+  // Initialize EmailJS (free account)
+  emailjs.init({
+    publicKey: 'GQ_fxyz1234567890ABCD'  // Replace with your actual public key from emailjs.com
+  });
+
+  const formData = {
+    to_email: 'dr.bensoltanawajih@gmail.com',
+    from_name: form.name.value,
+    from_email: form.email.value,
+    phone: form.phone.value,
+    appointment_date: form.date.value,
+    message: form.message.value,
+    reply_to: form.email.value
+  };
+
+  formFeedback.textContent = 'Envoi en cours...';
+
+  emailjs.send('service_appointment', 'template_appointment', formData)
+    .then(() => {
+      formFeedback.textContent = 'Merci ! Votre demande a bien été envoyée au Dr Ben Soltana Wajih. Vous recevrez un appel de confirmation sous peu.';
+      formFeedback.style.color = '#0b6397';
+      form.reset();
+      setTimeout(() => {
+        formFeedback.textContent = '';
+        formFeedback.style.color = '';
+      }, 8000);
+    })
+    .catch((error) => {
+      formFeedback.textContent = 'Erreur lors de l\'envoi. Veuillez réessayer ou appeler directement: 55 740 439';
+      formFeedback.style.color = '#c0392b';
+      console.error('EmailJS error:', error);
+    });
 });
 
 /* Close the mobile drawer automatically if the viewport grows back to desktop size */
