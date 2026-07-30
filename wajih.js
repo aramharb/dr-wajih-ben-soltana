@@ -1,6 +1,9 @@
 const navToggle = document.querySelector('.nav-toggle');
+const navClose = document.querySelector('.nav-close');
+const navOverlay = document.querySelector('.nav-overlay');
 const siteNav = document.querySelector('.site-nav');
 const navLinks = document.querySelectorAll('.nav-link');
+const tabbarItems = document.querySelectorAll('.tabbar-item');
 const progressBar = document.getElementById('progressBar');
 const backToTop = document.getElementById('backToTop');
 const form = document.getElementById('appointmentForm');
@@ -10,8 +13,6 @@ const header = document.querySelector('.site-header');
 const heroButtons = document.querySelectorAll('[data-target]');
 
 const sections = [...document.querySelectorAll('main section[id]')];
-const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
-const mobileFab = document.querySelector('.mobile-fab');
 
 window.addEventListener('load', () => {
   document.querySelector('.page-loader').classList.add('hide');
@@ -25,10 +26,30 @@ window.addEventListener('scroll', () => {
   toggleBackToTop();
 });
 
+function openNav() {
+  siteNav.classList.add('open');
+  navOverlay.classList.add('visible');
+  navToggle.setAttribute('aria-expanded', 'true');
+  document.body.classList.add('nav-locked');
+}
+
+function closeNav() {
+  siteNav.classList.remove('open');
+  navOverlay.classList.remove('visible');
+  navToggle.setAttribute('aria-expanded', 'false');
+  document.body.classList.remove('nav-locked');
+}
+
 navToggle.addEventListener('click', () => {
   const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-  navToggle.setAttribute('aria-expanded', String(!expanded));
-  siteNav.classList.toggle('open');
+  expanded ? closeNav() : openNav();
+});
+
+navClose?.addEventListener('click', closeNav);
+navOverlay?.addEventListener('click', closeNav);
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeNav();
 });
 
 heroButtons.forEach((button) => {
@@ -41,39 +62,19 @@ heroButtons.forEach((button) => {
 
 navLinks.forEach((link) => {
   link.addEventListener('click', () => {
-    siteNav.classList.remove('open');
-    navToggle.setAttribute('aria-expanded', 'false');
+    closeNav();
   });
 });
-
-// wire mobile bottom nav buttons (app-like)
-if (mobileNavBtns) {
-  mobileNavBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      const targetId = e.currentTarget.dataset.target;
-      document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-      // set aria and active states
-      mobileNavBtns.forEach((b) => b.classList.remove('active'));
-      e.currentTarget.classList.add('active');
-      // close top nav if it was open
-      siteNav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
-}
-
-if (mobileFab) {
-  mobileFab.addEventListener('click', (e) => {
-    e.preventDefault();
-    const targetId = e.currentTarget.dataset.target;
-    document.querySelector(targetId).scrollIntoView({ behavior: 'smooth' });
-  });
-}
 
 modeToggle.addEventListener('click', () => {
   document.documentElement.classList.toggle('dark');
   const isDark = document.documentElement.classList.contains('dark');
-  modeToggle.textContent = isDark ? '☀️' : '🌙';
+  modeToggle.setAttribute('aria-pressed', String(isDark));
+  modeToggle.setAttribute('title', isDark ? 'Activer le mode clair' : 'Activer le mode sombre');
+  // swap the inline icon for clarity
+  modeToggle.innerHTML = isDark
+    ? '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.76 4.84l-1.8-1.79L3.17 4.84l1.79 1.79 1.8-1.79zM20.24 19.16l1.79 1.79 1.79-1.79-1.79-1.79-1.79 1.79zM2 12a1 1 0 011-1h3a1 1 0 010 2H3a1 1 0 01-1-1zM18 11a1 1 0 010 2h3a1 1 0 010-2h-3zM6.76 19.16l1.79-1.79-1.79-1.79-1.79 1.79 1.79 1.79zM17.24 4.84l1.79-1.79L17.24 1.26l-1.79 1.79 1.79 1.79zM12 4a1 1 0 011-1v3a1 1 0 01-2 0V3a1 1 0 011 1zM12 17a1 1 0 011 1v3a1 1 0 01-2 0v-3a1 1 0 011-1z"/></svg><span class="sr-only">Activer le mode clair</span>'
+    : '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 109.8 9.8z"/></svg><span class="sr-only">Activer le mode sombre</span>';
 });
 
 function updateProgress() {
@@ -103,15 +104,18 @@ function updateNavHighlight() {
   });
 
   navLinks.forEach((link) => {
-    link.classList.toggle('active', link.getAttribute('href') === `#${currentId}`);
+    const isActive = link.getAttribute('href') === `#${currentId}`;
+    link.classList.toggle('active', isActive);
+    if (isActive) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
   });
 
-  // also update mobile bottom nav active state when present
-  if (mobileNavBtns && mobileNavBtns.length) {
-    mobileNavBtns.forEach((btn) => {
-      btn.classList.toggle('active', btn.dataset.target === `#${currentId}`);
-    });
-  }
+  // sync app-style bottom tab bar (if present)
+  tabbarItems.forEach((item) => {
+    const href = item.getAttribute('href') || item.dataset.target || '';
+    const isActiveTab = href === `#${currentId}`;
+    item.classList.toggle('active', isActiveTab);
+    if (isActiveTab) item.setAttribute('aria-current', 'page'); else item.removeAttribute('aria-current');
+  });
 }
 
 const observer = new IntersectionObserver(
@@ -198,40 +202,9 @@ form.addEventListener('submit', (event) => {
   }, 5000);
 });
 
-/* Fit each main section to the viewport on small screens by scaling the content container. */
-function fitSectionsToViewport() {
-  // only apply on narrow/mobile viewports
-  const apply = window.innerWidth <= 520 || window.innerHeight <= 800;
-  document.querySelectorAll('main section').forEach((section) => {
-    const container = section.querySelector('.container') || section;
-    container.style.transition = 'transform 160ms ease';
-    container.style.transformOrigin = 'top center';
-
-    // reset before measuring
-    container.style.transform = '';
-
-    if (!apply) {
-      // ensure we clear any previous transform on larger screens
-      container.style.transform = '';
-      return;
-    }
-
-    const contentHeight = container.scrollHeight;
-    const available = Math.max(window.innerHeight - 24, 200);
-    let scale = available / contentHeight;
-    if (scale > 1) scale = 1;
-    if (scale < 0.55) scale = 0.55; // prevent unreadably small text
-
-    container.style.transform = `scale(${scale})`;
-  });
-}
-
-let _fitT;
+/* Close the mobile drawer automatically if the viewport grows back to desktop size */
 window.addEventListener('resize', () => {
-  clearTimeout(_fitT);
-  _fitT = setTimeout(fitSectionsToViewport, 120);
+  if (window.innerWidth > 780) {
+    closeNav();
+  }
 });
-window.addEventListener('orientationchange', () => setTimeout(fitSectionsToViewport, 200));
-window.addEventListener('load', fitSectionsToViewport);
-document.addEventListener('DOMContentLoaded', fitSectionsToViewport);
-

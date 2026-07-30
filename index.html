@@ -20,24 +20,35 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#accueil">🦷 Dr Ben Soltana Wajih</a>
-      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="site-nav" aria-label="Navigation principale">
-        <a href="#accueil" class="nav-link active">Accueil</a>
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#tarifs" class="nav-link">Tarifs</a>
-        <a href="#galerie" class="nav-link">Galerie</a>
-        <a href="#temoignages" class="nav-link">Témoignages</a>
-        <a href="#contact" class="nav-link">Contact</a>
+      <a class="brand" href="#accueil"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C9 2 7 4 7 7c0 4-3 6-3 10 0 1.7 1.3 3 3 3 2 0 4-1 5-3 1 2 3 3 5 3 1.7 0 3-1.3 3-3 0-4-3-6-3-10 0-3-2-5-5-5z"></path></svg>Dr Ben Soltana Wajih</a>
+
+      <nav class="site-nav" aria-label="Navigation principale" role="navigation">
+        <div class="site-nav-head">
+          <span class="site-nav-title">Menu</span>
+          <button class="nav-close" aria-label="Fermer le menu">✕</button>
+        </div>
+        <a href="#accueil" class="nav-link active" aria-current="page"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5L12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V11.5z"></path></svg>Accueil</a>
+        <a href="#services" class="nav-link"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C9 2 7 4 7 7c0 4-3 6-3 10 0 1.7 1.3 3 3 3 2 0 4-1 5-3 1 2 3 3 5 3 1.7 0 3-1.3 3-3 0-4-3-6-3-10 0-3-2-5-5-5z"></path></svg>Services</a>
+        <a href="#tarifs" class="nav-link"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 7a2 2 0 012-2h16a2 2 0 012 2v2H2V7zm0 4h20v5a2 2 0 01-2 2H4a2 2 0 01-2-2v-5zm4 2a1 1 0 100-2 1 1 0 000 2z"></path></svg>Tarifs</a>
+        <a href="#galerie" class="nav-link"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 19V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14h18zM8 9l3 4 2-3 5 6H5l3-7z"></path></svg>Galerie</a>
+        <a href="#temoignages" class="nav-link"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 2H4a2 2 0 00-2 2v14l4-2h14a2 2 0 002-2V4a2 2 0 00-2-2z"></path></svg>Témoignages</a>
+        <a href="#contact" class="nav-link"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"></path></svg>Contact</a>
+        <a href="#contact" class="cta-button glow nav-cta" data-target="#contact">Prendre rendez-vous</a>
       </nav>
+
       <div class="header-actions">
         <button class="cta-button small glow" data-target="#contact">Prendre rendez-vous</button>
-        <button class="mode-toggle" aria-label="Basculer mode sombre">🌙</button>
+        <button class="mode-toggle" aria-label="Basculer mode sombre" aria-pressed="false" title="Activer le mode sombre">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 109.8 9.8z"></path></svg>
+          <span class="sr-only">Basculer mode sombre</span>
+        </button>
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
+  <div class="nav-overlay" tabindex="-1"></div>
 
   <main>
     <section class="hero-section" id="accueil">
@@ -48,8 +59,8 @@
           <p class="hero-subtitle">Chirurgien Dentiste</p>
           <p class="hero-text">Votre sourire mérite les meilleurs soins. Une dentisterie moderne, précise et confortable pour toute la famille.</p>
           <div class="hero-buttons">
-            <a href="#contact" class="cta-button glow">📞 Prendre un rendez-vous</a>
-            <a href="#contact" class="ghost-button">📍 Voir la localisation</a>
+            <a href="#contact" class="cta-button glow"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2a15.05 15.05 0 006.2 6.2l2.2-2.2a1 1 0 011.1-.2c1.2.5 2.4.8 3.7.8a1 1 0 011 1v3.5a1 1 0 01-1 1C10.6 21.5 2.5 13.4 2.5 4a1 1 0 011-1H7a1 1 0 011 1c0 1.3.3 2.5.8 3.7a1 1 0 01-.2 1.1L6.6 10.2z"></path></svg>Prendre un rendez-vous</a>
+            <a href="#contact" class="ghost-button"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"></path></svg>Voir la localisation</a>
           </div>
           <div class="hero-notes">
             <span>Consultations professionnelles</span>
@@ -70,22 +81,22 @@
     <section class="stats-section" aria-label="Statistiques du cabinet">
       <div class="container stats-grid">
         <article class="stat-card fade-up">
-          <span class="stat-icon">👨‍⚕️</span>
+          <span class="stat-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2a4 4 0 110 8 4 4 0 010-8zm0 10c-4 0-8 2-8 5v2h16v-2c0-3-4-5-8-5z"/></svg></span>
           <strong class="stat-number" data-target="10">0</strong>
           <p>années d'expérience</p>
         </article>
         <article class="stat-card fade-up delay-1">
-          <span class="stat-icon">😊</span>
+          <span class="stat-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-3.5 8a1.5 1.5 0 11.001-3.001A1.5 1.5 0 018.5 10zm7 0a1.5 1.5 0 11.001-3.001A1.5 1.5 0 0115.5 10zM12 17a5 5 0 01-4-2h8a5 5 0 01-4 2z"/></svg></span>
           <strong class="stat-number" data-target="5000">0</strong>
           <p>patients satisfaits</p>
         </article>
         <article class="stat-card fade-up delay-2">
-          <span class="stat-icon">⭐</span>
+          <span class="stat-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 17.3l6.18 3.73-1.64-7.03L21 9.24l-7.19-.62L12 2 10.19 8.62 3 9.24l4.46 4.76L5.82 21z"/></svg></span>
           <strong class="stat-number" data-target="4.9">0</strong>
           <p>note moyenne</p>
         </article>
         <article class="stat-card fade-up delay-3">
-          <span class="stat-icon">🦷</span>
+          <span class="stat-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2C9 2 7 4 7 7c0 4-3 6-3 10 0 1.7 1.3 3 3 3 2 0 4-1 5-3 1 2 3 3 5 3 1.7 0 3-1.3 3-3 0-4-3-6-3-10 0-3-2-5-5-5z"/></svg></span>
           <strong>Soins modernes</strong>
           <p>solutions personnalisées</p>
         </article>
@@ -99,37 +110,37 @@
       </div>
       <div class="container services-grid">
         <article class="service-card fade-up">
-          <span class="service-icon">🦷</span>
+          <span class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2C9 2 7 4 7 7c0 4-3 6-3 10 0 1.7 1.3 3 3 3 2 0 4-1 5-3 1 2 3 3 5 3 1.7 0 3-1.3 3-3 0-4-3-6-3-10 0-3-2-5-5-5z"/></svg></span>
           <h3>Bilan dentaire</h3>
           <p>Examen complet pour prévenir les problèmes et garder un sourire éclatant.</p>
           <a href="#contact" class="link-btn">En savoir plus</a>
         </article>
         <article class="service-card fade-up delay-1">
-          <span class="service-icon">✨</span>
+          <span class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3l1.9 3.9L18 9l-3.1 1.1L12 14l-1.9-3.9L6 9l3.1-2.1L12 3z"/></svg></span>
           <h3>Blanchiment des dents</h3>
           <p>Blanchiment professionnel pour retrouver une dentition lumineuse et naturelle.</p>
           <a href="#contact" class="link-btn">En savoir plus</a>
         </article>
         <article class="service-card fade-up delay-2">
-          <span class="service-icon">😁</span>
+          <span class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 17c-3.9 0-7 3.1-7 3.1S9.1 22 12 22s7-1.9 7-1.9S15.9 17 12 17zM8 11a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"/></svg></span>
           <h3>Orthodontie</h3>
           <p>Traitements modernes pour réaligner les dents avec confort et discrétion.</p>
           <a href="#contact" class="link-btn">En savoir plus</a>
         </article>
         <article class="service-card fade-up delay-3">
-          <span class="service-icon">🦷</span>
+          <span class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2C9 2 7 4 7 7c0 4-3 6-3 10 0 1.7 1.3 3 3 3 2 0 4-1 5-3 1 2 3 3 5 3 1.7 0 3-1.3 3-3 0-4-3-6-3-10 0-3-2-5-5-5z"/></svg></span>
           <h3>Implants dentaires</h3>
           <p>Implants durables pour restaurer la fonction et l'esthétique du sourire.</p>
           <a href="#contact" class="link-btn">En savoir plus</a>
         </article>
         <article class="service-card fade-up delay-4">
-          <span class="service-icon">🪥</span>
+          <span class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16v2H4V6zm2 4h12v8H6v-8z"/></svg></span>
           <h3>Détartrage & nettoyage</h3>
           <p>Nettoyage approfondi pour une hygiène parfaite et une bouche saine.</p>
           <a href="#contact" class="link-btn">En savoir plus</a>
         </article>
         <article class="service-card fade-up delay-5">
-          <span class="service-icon">👶</span>
+          <span class="service-icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 2a5 5 0 015 5v5h-2v5h-6v-5H7V7a5 5 0 015-5z"/></svg></span>
           <h3>Dentisterie pédiatrique</h3>
           <p>Soins attentionnés pour les enfants avec une approche douce et rassurante.</p>
           <a href="#contact" class="link-btn">En savoir plus</a>
@@ -295,9 +306,9 @@
           <a href="mailto:dr.bensoltanawajih@gmail.com">dr.bensoltanawajih@gmail.com</a>
         </article>
         <article class="contact-card">
-          <h3>Phone</h3>
-          <p>55740439</p>
-          <p>58411555</p>
+          <h3>Téléphone</h3>
+          <p><a href="tel:+21655740439">55 740 439</a></p>
+          <p><a href="tel:+21658411555">58 411 555</a></p>
         </article>
         <article class="contact-card">
           <h3>Adresse</h3>
@@ -312,7 +323,7 @@
           <span>Google Maps Placeholder</span>
           <small>Route Habib Thameur, Manzel Tmime</small>
         </div>
-        <a href="https://www.google.com/maps" target="_blank" rel="noreferrer" class="link-btn">Voir sur Google Maps</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Route+Habib+Thameur+Manzel+Tmime+8080" target="_blank" rel="noreferrer" class="link-btn">Voir sur Google Maps</a>
       </div>
     </section>
   </main>
@@ -324,15 +335,15 @@
         <p>Chirurgien Dentiste</p>
       </div>
       <div>
-        <p>55740439</p>
-        <p>58411555</p>
+        <p><a href="tel:+21655740439">55 740 439</a></p>
+        <p><a href="tel:+21658411555">58 411 555</a></p>
         <p><a href="mailto:dr.bensoltanawajih@gmail.com">dr.bensoltanawajih@gmail.com</a></p>
         <p>Route Habib Thameur, Manzel Tmime</p>
       </div>
       <div class="social-links">
         <a href="#" aria-label="Facebook">Facebook</a>
         <a href="#" aria-label="Instagram">Instagram</a>
-        <a href="#" aria-label="WhatsApp">WhatsApp</a>
+        <a href="https://wa.me/21655740439" target="_blank" rel="noreferrer" aria-label="WhatsApp">WhatsApp</a>
       </div>
     </div>
     <p class="footer-copy">© 2026 Dr Ben Soltana Wajih. Tous droits réservés.</p>
@@ -340,25 +351,23 @@
 
   <button class="back-to-top" id="backToTop" aria-label="Retour en haut">↑</button>
 
-  <!-- Mobile bottom navigation (app-like) -->
-  <nav class="mobile-bottom-nav" aria-label="Navigation mobile">
-    <button class="mobile-nav-btn" data-target="#accueil" aria-label="Accueil">
-      <span class="icon">🏠</span>
-      <span class="label">Accueil</span>
-    </button>
-    <button class="mobile-nav-btn" data-target="#services" aria-label="Services">
-      <span class="icon">🛠️</span>
-      <span class="label">Services</span>
-    </button>
-    <button class="mobile-fab" data-target="#contact" aria-label="Prendre rendez-vous">📞</button>
-    <button class="mobile-nav-btn" data-target="#galerie" aria-label="Galerie">
-      <span class="icon">🖼️</span>
-      <span class="label">Galerie</span>
-    </button>
-    <button class="mobile-nav-btn" data-target="#temoignages" aria-label="Témoignages">
-      <span class="icon">💬</span>
-      <span class="label">Avis</span>
-    </button>
+  <nav class="mobile-tabbar" aria-label="Navigation rapide" role="navigation">
+    <a href="tel:+21655740439" class="tabbar-item" aria-label="Appeler">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.2a15.05 15.05 0 006.2 6.2l2.2-2.2a1 1 0 011.1-.2c1.2.5 2.4.8 3.7.8a1 1 0 011 1v3.5a1 1 0 01-1 1C10.6 21.5 2.5 13.4 2.5 4a1 1 0 011-1H7a1 1 0 011 1c0 1.3.3 2.5.8 3.7a1 1 0 01-.2 1.1L6.6 10.2z"/></svg>
+      <span>Appeler</span>
+    </a>
+    <a href="https://wa.me/21655740439" target="_blank" rel="noreferrer" class="tabbar-item" aria-label="WhatsApp">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 3.01L3 3a1 1 0 00-1 1v14l4-1 1 1 2-1 2 1 4-1 4 1V4.01A1 1 0 0021 3z"/></svg>
+      <span>WhatsApp</span>
+    </a>
+    <a href="#contact" class="tabbar-item tabbar-item-primary" data-target="#contact" aria-label="Rendez-vous">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11h10v2H7zM7 7h10v2H7zM7 15h6v2H7z"/></svg>
+      <span>Rendez-vous</span>
+    </a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Route+Habib+Thameur+Manzel+Tmime+8080" target="_blank" rel="noreferrer" class="tabbar-item" aria-label="Itinéraire">
+      <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1112 6a2.5 2.5 0 010 5.5z"/></svg>
+      <span>Itinéraire</span>
+    </a>
   </nav>
 
   <script src="wajih.js"></script>
