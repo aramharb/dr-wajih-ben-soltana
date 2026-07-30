@@ -785,30 +785,37 @@ textarea {
 @media (max-width: 780px) {
   .header-inner {
     flex-wrap: wrap;
+    gap: 0.75rem;
   }
 
   .site-nav {
-    position: fixed;
-    inset: 72px 0 auto 0;
-    max-height: 0;
-    padding: 0 1.2rem;
-    overflow: hidden;
-    flex-direction: column;
-    background: rgba(255, 255, 255, 0.98);
-    transition: max-height 0.35s ease;
-    border-bottom: 1px solid rgba(16, 36, 59, 0.08);
+    /* keep the same horizontal layout and spacing as desktop */
+    position: static;
+    inset: auto;
+    max-height: none;
+    padding: 0;
+    overflow: visible;
+    flex-direction: row;
+    flex-wrap: nowrap; /* avoid wrapping to preserve desktop look */
+    gap: 1.4rem; /* same gap as desktop */
+    justify-content: flex-start; /* align like desktop */
+    align-items: center;
+    background: transparent;
+    border: none;
   }
 
   .site-nav.open {
-    max-height: 260px;
+    max-height: none;
   }
 
   .nav-toggle {
-    display: inline-flex;
+    display: none;
   }
 
   .header-actions {
-    margin-left: auto;
+    margin-left: 0;
+    width: auto; /* keep actions inline like desktop */
+    justify-content: flex-start;
   }
 
   .hero-buttons,
