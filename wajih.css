@@ -920,8 +920,8 @@ textarea {
     top: 0;
     right: 0;
     bottom: 0;
-    width: 100%;
-    max-width: 85vw;
+    width: 75vw;
+    max-width: 280px;
     background: var(--surface-strong);
     backdrop-filter: blur(20px);
     display: flex;
@@ -1016,6 +1016,11 @@ textarea {
     gap: 0.5rem;
   }
 
+  main {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
   .hero-buttons,
   .hero-notes {
     flex-direction: column;
@@ -1068,7 +1073,9 @@ textarea {
 @media (max-width: 520px) {
   .container {
     width: 100%;
+    max-width: 100%;
     padding: 0 1.1rem;
+    margin: 0 auto;
   }
 
   .hero-section {
