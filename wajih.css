@@ -418,6 +418,13 @@ h1 {
   background: var(--surface);
   box-shadow: var(--shadow);
   text-align: center;
+  transition: transform 0.28s ease, box-shadow 0.28s ease;
+  will-change: transform;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 28px 58px rgba(16, 36, 59, 0.13);
 }
 
 .stat-icon {
@@ -459,11 +466,24 @@ h1 {
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 
 .service-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 32px 70px rgba(16, 36, 59, 0.14);
+}
+
+.interactive-card {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --lift: 0px;
+  transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateY(var(--lift));
+}
+
+.interactive-card:hover {
+  --lift: -8px;
 }
 
 .service-icon {
@@ -683,11 +703,200 @@ h1 {
   margin: 1rem 0 1.4rem;
 }
 
+.section-intro {
+  max-width: 760px;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.faq-section {
+  padding: 3.5rem 0;
+}
+
+.faq-list {
+  max-width: 1100px;
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.faq-item {
+  border-radius: 22px;
+  background: var(--surface);
+  box-shadow: 0 18px 45px rgba(16, 36, 59, 0.08);
+  border: 1px solid rgba(11, 99, 151, 0.08);
+  overflow: hidden;
+}
+
+.faq-item summary {
+  position: relative;
+  cursor: pointer;
+  list-style: none;
+  padding: 1.35rem 3.5rem 1.35rem 1.4rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 1.35rem;
+  top: 50%;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--primary);
+  font-size: 1.3rem;
+  transition: transform 0.2s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-item[open] summary {
+  color: var(--primary);
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 1.4rem 1.4rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.appointment-info-panel {
+  margin-top: 1.6rem;
+  padding: 1.4rem;
+  border-radius: 28px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(11, 99, 151, 0.08);
+}
+
+.schedule-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(57, 192, 216, 0.16), rgba(11, 99, 151, 0.1));
+  color: var(--text);
+}
+
+.schedule-badge span {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.schedule-badge strong {
+  color: var(--primary);
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
+.contact-methods {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.contact-method-card {
+  padding: 1.25rem;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(16, 36, 59, 0.08);
+}
+
+.contact-method-card.in-hours {
+  border-color: rgba(57, 192, 216, 0.28);
+}
+
+.contact-method-card.after-hours {
+  border-color: rgba(11, 99, 151, 0.18);
+}
+
+.method-label {
+  display: inline-flex;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.contact-method-card h3 {
+  margin: 0.85rem 0 0.55rem;
+  font-size: 1.05rem;
+}
+
+.contact-method-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.appointment-quick-actions {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.quick-contact-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(11, 99, 151, 0.18);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--primary);
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.quick-contact-button.primary {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+}
+
+.quick-contact-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(16, 36, 59, 0.1);
+}
+
+.confirmation-note {
+  margin: 1rem 0 0;
+  padding: 0.9rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .appointment-grid {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 2.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .appointment-form {
@@ -695,6 +904,11 @@ h1 {
   border-radius: 32px;
   background: var(--surface-strong);
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+  align-self: stretch;
 }
 
 .form-grid {
@@ -731,6 +945,15 @@ textarea:focus {
 textarea {
   min-height: 140px;
   resize: vertical;
+}
+
+.appointment-form > label {
+  flex: 1;
+}
+
+.appointment-form textarea {
+  min-height: 260px;
+  height: 100%;
 }
 
 .error-message {
@@ -972,12 +1195,43 @@ textarea {
 .fade-up {
   opacity: 0;
   transform: translateY(26px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
+  filter: blur(8px);
+  transition: opacity 0.75s ease, transform 0.75s ease, filter 0.75s ease;
 }
 
 .fade-up.visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0);
+}
+
+.hero-visual {
+  --hero-drift: 0px;
+}
+
+.photo-frame {
+  transform: translate3d(0, var(--hero-drift), 0);
+  transition: transform 0.2s ease-out;
+  will-change: transform;
+}
+
+.visual-shape {
+  animation: soft-float 9s ease-in-out infinite;
+}
+
+.shape-2 {
+  animation-delay: -4s;
+}
+
+@keyframes soft-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(8px, -12px, 0) scale(1.04);
+  }
 }
 
 .delay-1 { transition-delay: 0.1s; }
@@ -1109,6 +1363,10 @@ textarea {
   .nav-link.active,
   .nav-link:hover {
     background: var(--accent-soft);
+  }
+
+  .contact-methods {
+    grid-template-columns: 1fr;
   }
 
   .nav-cta {
@@ -1267,6 +1525,30 @@ textarea {
     width: 100%;
   }
 
+  .appointment-info-panel {
+    padding: 1rem;
+    border-radius: 20px;
+  }
+
+  .schedule-badge {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .appointment-quick-actions,
+  .quick-contact-button {
+    width: 100%;
+  }
+
+  .faq-item summary {
+    padding: 1.15rem 3.2rem 1.15rem 1.1rem;
+  }
+
+  .faq-item p {
+    padding: 0 1.1rem 1.2rem;
+  }
+
   .header-inner {
     padding: 0.7rem 0;
   }
@@ -1316,6 +1598,7 @@ textarea {
 
   .service-card:hover,
   .gallery-card:hover,
+  .stat-card:hover,
   .footer-item:hover,
   .cta-button:hover,
   .link-btn:hover {
@@ -1325,6 +1608,20 @@ textarea {
   .fade-up,
   .fade-up.visible {
     opacity: 1;
+    transform: none;
+    filter: none;
+    transition: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-up,
+  .fade-up.visible,
+  .interactive-card,
+  .photo-frame,
+  .visual-shape {
+    animation: none;
+    filter: none;
     transform: none;
     transition: none;
   }
@@ -1361,8 +1658,26 @@ textarea {
 .dark .testimonial-card,
 .dark .appointment-form,
 .dark .contact-card,
-.dark .map-card {
+.dark .map-card,
+.dark .faq-item,
+.dark .appointment-info-panel {
   background: rgba(10, 20, 40, 0.78);
+}
+
+.dark .contact-method-card {
+  background: rgba(12, 24, 44, 0.86);
+  border-color: rgba(91, 197, 247, 0.14);
+}
+
+.dark .quick-contact-button {
+  background: rgba(16, 31, 54, 0.92);
+  border-color: rgba(91, 197, 247, 0.2);
+  color: var(--accent);
+}
+
+.dark .quick-contact-button.primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), #276b9b);
 }
 
 .dark .nav-link,
